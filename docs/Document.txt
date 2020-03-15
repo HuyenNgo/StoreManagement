@@ -1,0 +1,15 @@
+PHẦM MỀM QUẢN LÝ CỬA HÀNG MOIJ <Chuyên bán đồ lưu niệm, quà tặng,...>
+
+Chức năng cơ bản:
+
+Đã code:
+
+- Tra cứu sản phẩm: Thêm Sản phẩm, Tìm kiếm sản phẩm <Đã xong>
+- Tra cứu loại sản phẩm: Thêm loại Sản phẩm, Tìm kiếm loại sản phẩm <Đã xong>
+- Tra cứu khách hàng: Thêm khách hàng, Tìm kiếm khách hàng <Đang làm>
+
+Chưa code:
+- Lập báo cáo tồn kho 
+- Lập báo cáo doanh thu
+- Lập hoá đơn
+- Lập phiếu nhập hàng
