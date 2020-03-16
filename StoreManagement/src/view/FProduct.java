@@ -56,7 +56,7 @@ public class FProduct extends MyFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableBook = new javax.swing.JTable();
+        tableProduct = new javax.swing.JTable();
         btnExit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         txfSearch = new javax.swing.JTextField();
@@ -152,7 +152,7 @@ public class FProduct extends MyFrame {
         jPanel4.setBackground(new java.awt.Color(0, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
 
-        tableBook.setModel(new javax.swing.table.DefaultTableModel(
+        tableProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -171,12 +171,12 @@ public class FProduct extends MyFrame {
                 return types [columnIndex];
             }
         });
-        tableBook.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableBookMouseClicked(evt);
+                tableProductMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableBook);
+        jScrollPane1.setViewportView(tableProduct);
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnExit.setText("Thoát");
@@ -294,12 +294,13 @@ public class FProduct extends MyFrame {
     }//GEN-LAST:event_btnAddBookActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controller.searchBook(txfSearch.getText(),tableBook);
+        Controller.searchBook(txfSearch.getText(),tableProduct);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tableBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookMouseClicked
-
-    }//GEN-LAST:event_tableBookMouseClicked
+    private void tableProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductMouseClicked
+      FProductInfo.getInstance().setBook(Controller.getProductByID(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(), 1).toString()));
+        FManagement.getInstance().addFormToQueue(FProductInfo.getInstance());
+    }//GEN-LAST:event_tableProductMouseClicked
 
     /**
      * @param args the command line arguments
@@ -348,13 +349,13 @@ public class FProduct extends MyFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableBook;
+    private javax.swing.JTable tableProduct;
     private javax.swing.JTextField txfSearch;
     private javax.swing.JTextField txfname;
     // End of variables declaration//GEN-END:variables
 
     private void loadTable() {
-        Controller.loadTable(tableBook);
+        Controller.loadTable(tableProduct);
     }
 
     private void loadCBCategory() {

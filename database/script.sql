@@ -32,7 +32,7 @@ CREATE TABLE `bill` (
   PRIMARY KEY (`NUMBILL`),
   KEY `BILL_CUSTOMER_FK` (`CUSTOMERID`),
   CONSTRAINT `BILL_CUSTOMER_FK` FOREIGN KEY (`CUSTOMERID`) REFERENCES `customer` (`CUSTOMERID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
+INSERT INTO `bill` VALUES (1,2,'2020-03-16 00:00:00',12000,30000,12000);
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +56,7 @@ CREATE TABLE `category` (
   `CATEGORYID` int(11) NOT NULL AUTO_INCREMENT,
   `CATEGORYNAME` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`CATEGORYID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +65,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'bút'),(2,'vở'),(3,'sach'),(4,'mu'),(7,'huyen'),(8,'luuniem'),(9,'quần áo');
+INSERT INTO `category` VALUES (1,'bút'),(2,'vở'),(3,'sach'),(4,'mu'),(7,'huyen'),(8,'luuniem'),(9,'quần áo'),(10,'Giay Note');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +83,7 @@ CREATE TABLE `customer` (
   `PHONE` varchar(11) NOT NULL DEFAULT ' ',
   `Email` varchar(100) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`CUSTOMERID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +92,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (2,'huyen','quan4','29273273','hhhhhh'),(3,'test','quận 1','098272362','dffffs');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,6 +122,7 @@ CREATE TABLE `detail_bill` (
 
 LOCK TABLES `detail_bill` WRITE;
 /*!40000 ALTER TABLE `detail_bill` DISABLE KEYS */;
+INSERT INTO `detail_bill` VALUES (1,1,2,6000,12000);
 /*!40000 ALTER TABLE `detail_bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,6 +152,7 @@ CREATE TABLE `detail_inventoryinput` (
 
 LOCK TABLES `detail_inventoryinput` WRITE;
 /*!40000 ALTER TABLE `detail_inventoryinput` DISABLE KEYS */;
+INSERT INTO `detail_inventoryinput` VALUES (1,1,3,5000,15000),(1,2,2,4000,8000),(2,3,2,3000,6000),(2,4,1,13000,13000),(3,4,1,10000,10000),(4,4,2,13000,26000),(5,1,3,5000,15000);
 /*!40000 ALTER TABLE `detail_inventoryinput` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +168,7 @@ CREATE TABLE `inventoryinput` (
   `DATECREATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `TOTALMONEY` float DEFAULT '0',
   PRIMARY KEY (`NUMINVENTORY`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,6 +177,7 @@ CREATE TABLE `inventoryinput` (
 
 LOCK TABLES `inventoryinput` WRITE;
 /*!40000 ALTER TABLE `inventoryinput` DISABLE KEYS */;
+INSERT INTO `inventoryinput` VALUES (1,'2020-03-15 00:00:00',23000),(2,'2020-03-15 00:00:00',19000),(3,'2020-03-15 00:00:00',10000),(4,'2020-03-15 00:00:00',26000),(5,'2020-03-15 00:00:00',15000);
 /*!40000 ALTER TABLE `inventoryinput` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +197,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`PRODUCTID`),
   KEY `PRODUCT_CATEGORY_FK` (`CATEGORYID`),
   CONSTRAINT `PRODUCT_CATEGORY_FK` FOREIGN KEY (`CATEGORYID`) REFERENCES `category` (`CATEGORYID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +206,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Bút Màu Xanh',1,0,0);
+INSERT INTO `product` VALUES (1,'Bút Màu Xanh',1,4,5000),(2,'Vở tân tiến',2,1,0),(3,'Ly sứ hình chó',3,1,0),(4,'Sách giáo khoa',3,2,13000);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,6 +239,49 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'storemanagement'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `USP_AddBill` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_AddBill`(Datecre date, value float, moneyReceive float, moneyChange float, id int)
+BEGIN
+
+Insert into Bill (customerid,createdate, totalmoney,paid,rest) values (id,Datecre,value, moneyReceive, moneyChange);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_AddBillInfo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_AddBillInfo`(productid int, count int, price float, total float)
+BEGIN
+
+declare idnum int;
+ Set idnum= (select max(numbill) from bill);
+ Insert detail_bill values (idnum,productid,count,price,total);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `USP_AddCategory` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -256,6 +304,73 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_AddCustomer` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_AddCustomer`(Name varchar(100),mobilephone varchar(11), mail varchar(100),address varchar(100))
+BEGIN
+if (( select count(*) from customer where PHONE=mobilephone)=0)
+then
+
+insert customer(CUSTOMERNAME,ADDRESS,PHONE,Email)
+values (Name,address,mobilephone,mail);
+end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_AddImportProduct` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_AddImportProduct`(datecreate datetime, value float)
+BEGIN
+insert inventoryinput(DATECREATE,TOTALMONEY) values( datecreate,value);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_AddImportProductInfo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_AddImportProductInfo`(productid int, amount int, price float, total float)
+BEGIN
+declare id int;
+set id=(select max(numinventory) from inventoryinput);
+insert detail_inventoryinput values(id,productid,amount,price,total);
+
+update product 
+set product.totalnum=product.totalnum+amount , product.price=price where product.productid=productid;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `USP_AddProduct` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -272,6 +387,50 @@ if((select count(*) from Product where productname=Name )=0)
 then
 insert Product(productname,categoryid) values (Name,category);
 end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_GetBillByBillID` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GetBillByBillID`(id int)
+BEGIN
+
+select A.*, B.*
+from bill A  inner join detail_bill on A.numbill=B.numbill=id;
+
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_GetBillByCustomerID` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GetBillByCustomerID`(id int)
+BEGIN
+select A.*,B.*
+from bill A inner join detail B on A.numbill=B.numnill
+where A.customerid=id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -330,6 +489,46 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GetCategoryByProduct`(productid
 BEGIN
 select Category.categoryid,Category.categoryname from category,product
 where category.categoryid=product.categoryid and product.productid=productid;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_GetCustomer` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GetCustomer`()
+BEGIN
+select * from customer;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `USP_GetImporByProductID` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `USP_GetImporByProductID`(id int)
+BEGIN
+select A.*,B.*
+from inventoryinput A , detail_inventoryinput B
+where A.numinventory=B.numinventory and B.productid=id;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -424,4 +623,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-15 16:30:21
+-- Dump completed on 2020-03-16 22:22:03

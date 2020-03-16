@@ -345,15 +345,15 @@ public class FManagement extends MyFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnSearchCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCustomerActionPerformed
-       // addFormToQueue(FCustomer.getInstance());
+       addFormToQueue(FCustomer.getInstance());
     }//GEN-LAST:event_btnSearchCustomerActionPerformed
 
     private void btnBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillActionPerformed
-      
+       addFormToQueue(FBill.getInstance());
     }//GEN-LAST:event_btnBillActionPerformed
 
     private void btnImportProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportProductActionPerformed
-      
+      addFormToQueue(FImportProduct.getInstance());
     }//GEN-LAST:event_btnImportProductActionPerformed
 
     private void btnReportInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportInventoryActionPerformed
@@ -366,7 +366,7 @@ public class FManagement extends MyFrame {
 
     private void menuSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSearchProductActionPerformed
         // TODO add your handling code here:
-       ;
+        addFormToQueue(FProduct.getInstance());
     }//GEN-LAST:event_menuSearchProductActionPerformed
 
     private void menuSearchCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSearchCustomerActionPerformed

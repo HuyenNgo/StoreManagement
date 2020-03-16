@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author tnd
+ * @author huyen
  */
 public class FCustomer extends MyFrame {
     CustomerController Controller=new CustomerController();
@@ -118,18 +118,20 @@ public class FCustomer extends MyFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAdd)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4)
-                        .addComponent(txfAddress)
-                        .addComponent(txfName)
-                        .addComponent(jLabel6)
-                        .addComponent(txfPhone)
-                        .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(txfAddress)
+                    .addComponent(txfName)
+                    .addComponent(jLabel6)
+                    .addComponent(txfPhone)
+                    .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +154,7 @@ public class FCustomer extends MyFrame {
                 .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdd)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
@@ -262,15 +264,15 @@ public class FCustomer extends MyFrame {
         String phone=txfPhone.getText();
         String email=txfEmail.getText();
         String address=txfAddress.getText();
-//        if(Controller.AddCustomer(name,phone,email,address))
-//        {
-//            JOptionPane.showConfirmDialog(FCategoryBook.getInstance(), "Thêm khách hàng thành công !","Thông báo", JOptionPane.OK_OPTION);
-//            reload();
-//        }
-//        else
-//        {
-//            JOptionPane.showConfirmDialog(FCategoryBook.getInstance(), "Thêm khách hàng thất bại !","Thông báo", JOptionPane.OK_OPTION);
-//        }
+        if(Controller.AddCustomer(name,phone,email,address))
+        {
+            JOptionPane.showConfirmDialog(FCustomer.getInstance(), "Thêm khách hàng thành công !","Thông báo", JOptionPane.OK_OPTION);
+            reload();
+        }
+        else
+        {
+            JOptionPane.showConfirmDialog(FCustomer.getInstance(), "Thêm khách hàng thất bại !","Thông báo", JOptionPane.OK_OPTION);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed

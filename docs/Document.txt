@@ -6,10 +6,10 @@ Chức năng cơ bản:
 
 - Tra cứu sản phẩm: Thêm Sản phẩm, Tìm kiếm sản phẩm <Đã xong>
 - Tra cứu loại sản phẩm: Thêm loại Sản phẩm, Tìm kiếm loại sản phẩm <Đã xong>
-- Tra cứu khách hàng: Thêm khách hàng, Tìm kiếm khách hàng <Đang làm>
+- Tra cứu khách hàng: Thêm khách hàng, Tìm kiếm khách hàng <Đang xong>
+- Lập hoá đơn
+- Lập phiếu nhập hàng
 
 Chưa code:
 - Lập báo cáo tồn kho 
 - Lập báo cáo doanh thu
-- Lập hoá đơn
-- Lập phiếu nhập hàng

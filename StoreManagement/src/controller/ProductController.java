@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Product;
 import model.Category;
+import model.ImportProduct;
 //import model.ImportBook;
 
 /**
@@ -107,42 +108,42 @@ public class ProductController {
         table.getColumnModel().getColumn(5).setPreferredWidth(200);
         
     }
-    public Product getBookByID(String id) {
+    public Product getProductByID(String id) {
         return Model.getProductByID(id);
     }
 
-    public boolean UpdateBook(String id, String name, String category) {
+    public boolean UpdateProduct(String id, String name, String category) {
         String categoryID=category.split(":")[1];
         return Model.UpdateProduct(id, name, categoryID);
     }
 
-//    public void loadImportByBookID(JTable table,String id) {
-//        String[] head=new String[]{"STT","Số phiếu nhập","Ngày lập","Số lượng","Đơn giá","Thành tiền"};
-//      //  ArrayList<ImportBook> list= (new ImportBook()).getImporByBookID(id);
-//        Object[][] body=new Object[list.size()][6];
-//        for(int i=0;i<list.size();i++)
-//        {
-//            body[i][0]=i;
-//            body[i][1]=list.get(i).id();
-//            body[i][2]=(new SimpleDateFormat("dd/MM/yyyy")).format(list.get(i).date());
-//            body[i][3]=list.get(i).count();
-//            body[i][4]=list.get(i).price();
-//            body[i][5]=list.get(i).total();
-//        }
-//        DefaultTableModel dtm = new DefaultTableModel(body,head){
-//            @Override
-//            public boolean isCellEditable(int row, int column){
-//                return false;
-//            }
-//        };
-//        table.setModel(dtm);
-//        table.getColumnModel().getColumn(0).setPreferredWidth(70);
-//        table.getColumnModel().getColumn(1).setPreferredWidth(200);
-//        table.getColumnModel().getColumn(2).setPreferredWidth(200);
-//        table.getColumnModel().getColumn(3).setPreferredWidth(200);
-//        table.getColumnModel().getColumn(4).setPreferredWidth(200);
-//        table.getColumnModel().getColumn(5).setPreferredWidth(200);
-//    }
+    public void loadImportByProductID(JTable table,String id) {
+        String[] head=new String[]{"STT","Số phiếu nhập","Ngày lập","Số lượng","Đơn giá","Thành tiền"};
+       ArrayList<ImportProduct> list= (new ImportProduct()).getImporByProductID(id);
+        Object[][] body=new Object[list.size()][6];
+        for(int i=0;i<list.size();i++)
+        {
+            body[i][0]=i;
+            body[i][1]=list.get(i).id();
+            body[i][2]=(new SimpleDateFormat("dd/MM/yyyy")).format(list.get(i).date());
+            body[i][3]=list.get(i).count();
+            body[i][4]=list.get(i).price();
+            body[i][5]=list.get(i).total();
+        }
+        DefaultTableModel dtm = new DefaultTableModel(body,head){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        table.setModel(dtm);
+        table.getColumnModel().getColumn(0).setPreferredWidth(70);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(200);
+        table.getColumnModel().getColumn(3).setPreferredWidth(200);
+        table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        table.getColumnModel().getColumn(5).setPreferredWidth(200);
+    }
     
     
 }

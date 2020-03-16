@@ -29,18 +29,18 @@ public class Customer {
     public float owe(){return owe;}
     
     public Customer(){}
-    public Customer(String id, String name, String phoneNumber, String email, String address, float owe)
+    public Customer(String id, String name, String phoneNumber, String email, String address)
     {
         this.id=id;
         this.name=name;
         this.phoneNumber=phoneNumber;
         this.email=email;
         this.address=address;
-        this.owe=owe;
+      //  this.owe=owe;
     }
 
     public boolean AddCustomer(String name, String phone, String email, String address) {
-        String SQL="call USP_AddCusTomer(\""+name+"\",\""+phone+"\",\""+email+"\",\""+address+"\")";
+        String SQL="call USP_AddCustomer(\""+name+"\",\""+phone+"\",\""+email+"\",\""+address+"\")";
         try{
             DataAccessHelper.getInstance().getConnect();
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
@@ -67,13 +67,13 @@ public class Customer {
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next())
             {
-                String id=rs.getString("MaKhachHang");
-                String name=rs.getString("TenKhachHang");
-                String phone=rs.getString("SoDienThoai");
+                String id=rs.getString("Customerid");
+                String name=rs.getString("customername");
+                String phone=rs.getString("phone");
                 String email=rs.getString("Email");
-                String address=rs.getString("DiaChi");
-                Float owe=(float)Math.round(Float.parseFloat(rs.getString("SoTienNo")));
-                list.add(new Customer(id,name,phone,email,address,owe));
+                String address=rs.getString("address");
+               // Float owe=(float)Math.round(Float.parseFloat(rs.getString("SoTienNo")));
+                list.add(new Customer(id,name,phone,email,address));
             }
             DataAccessHelper.getInstance().getClose();
         } catch (Exception e) {}
@@ -95,7 +95,7 @@ public class Customer {
                 String email=rs.getString("Email");
                 String address=rs.getString("DiaChi");
                 Float owe=(float)Math.round(Float.parseFloat(rs.getString("SoTienNo")));
-                customer=new Customer(id,name,phone,email,address,owe);
+                customer=new Customer(id,name,phone,email,address);
             }
             DataAccessHelper.getInstance().getClose();
         } catch (Exception e) {}

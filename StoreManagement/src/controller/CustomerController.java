@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     public void loadCustomer(JTable table) {
-        String[] head=new String[]{"STT", "Mã khách hàng", "Tên khách hàng", "Số điện thoại", "Email", "Địa chỉ", "Số nợ"};
+        String[] head=new String[]{"STT", "Mã khách hàng", "Tên khách hàng", "Số điện thoại", "Email", "Địa chỉ"};
         ArrayList<Customer> list= Model.getCustomer();
         Object[][] body=new Object[list.size()][7];
         for(int i=0;i<list.size();i++)
@@ -35,7 +35,7 @@ public class CustomerController {
             body[i][3]=list.get(i).phoneNumber();
             body[i][4]=list.get(i).email();
             body[i][5]=list.get(i).address();
-            body[i][6]=list.get(i).owe();
+           
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -50,11 +50,11 @@ public class CustomerController {
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
         table.getColumnModel().getColumn(5).setPreferredWidth(200);
-        table.getColumnModel().getColumn(6).setPreferredWidth(200);
+       
     }
 
     public void SearchCustomer(JTable table, String text) {
-        String[] head=new String[]{"STT", "Mã khách hàng", "Tên khách hàng", "Số điện thoại", "Email", "Địa chỉ", "Số nợ"};
+        String[] head=new String[]{"STT", "Mã khách hàng", "Tên khách hàng", "Số điện thoại", "Email", "Địa chỉ"};
         ArrayList<Customer> list= Model.getCustomer();
         for(int i=0;i<list.size();i++)
         {
@@ -75,7 +75,7 @@ public class CustomerController {
             body[i][3]=list.get(i).phoneNumber();
             body[i][4]=list.get(i).email();
             body[i][5]=list.get(i).address();
-            body[i][6]=list.get(i).owe();
+            
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -90,7 +90,7 @@ public class CustomerController {
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
         table.getColumnModel().getColumn(5).setPreferredWidth(200);
-        table.getColumnModel().getColumn(6).setPreferredWidth(200);
+        
     }
 
     public Customer getCustomerByID(String id) {

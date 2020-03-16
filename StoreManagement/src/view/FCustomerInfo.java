@@ -262,7 +262,7 @@ public class FCustomerInfo extends MyFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tableBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBillMouseClicked
-
+      
     }//GEN-LAST:event_tableBillMouseClicked
 
     /**
