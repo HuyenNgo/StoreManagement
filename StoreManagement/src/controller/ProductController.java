@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Product;
 import model.Category;
 import model.ImportProduct;
-//import model.ImportBook;
+
 
 /**
  *
@@ -23,7 +23,7 @@ public class ProductController {
     Product Model=new Product();
 
     public void loadTable(JTable table) {
-        String[] head=new String[]{"STT","mã sản phẩm","Tên sản phẩm","Loại sản phẩm","Số lượng tồn","Đơn giá nhập"};
+        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Loại sản phẩm","Số lượng tồn"};
         ArrayList<Product> list= Model.getProduct();
         Object[][] body=new Object[list.size()][9];
         for(int i=0;i<list.size();i++)
@@ -33,7 +33,7 @@ public class ProductController {
             body[i][2]=list.get(i).name();
             body[i][3]=list.get(i).category().name();
             body[i][4]=list.get(i).count();
-            body[i][5]=list.get(i).price();
+          // body[i][5]=list.get(i).supplier();
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -47,7 +47,7 @@ public class ProductController {
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
-        table.getColumnModel().getColumn(5).setPreferredWidth(200);
+       // table.getColumnModel().getColumn(5).setPreferredWidth(200);
         
     }
 
@@ -69,7 +69,7 @@ public class ProductController {
     }
 
     public void searchBook(String text,JTable table) {
-        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Loại sản phẩm","Số lượng tồn","Đơn giá nhập"};
+        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Loại sản phẩm","Số lượng tồn"};
         ArrayList<Product> list= Model.getProduct();
         for(int i=0;i<list.size();i++)
         {
@@ -91,7 +91,7 @@ public class ProductController {
             body[i][2]=((Product)list.get(i)).name();
             body[i][3]=((Product)list.get(i)).category().name();
             body[i][4]=((Product)list.get(i)).count();
-            body[i][5]=Math.round(((Product)list.get(i)).price()*10)/10;
+            //body[i][5]=Math.round(((Product)list.get(i)).price()*10)/10;
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -105,7 +105,7 @@ public class ProductController {
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
-        table.getColumnModel().getColumn(5).setPreferredWidth(200);
+       // table.getColumnModel().getColumn(5).setPreferredWidth(200);
         
     }
     public Product getProductByID(String id) {
@@ -118,17 +118,19 @@ public class ProductController {
     }
 
     public void loadImportByProductID(JTable table,String id) {
-        String[] head=new String[]{"STT","Số phiếu nhập","Ngày lập","Số lượng","Đơn giá","Thành tiền"};
+        String[] head=new String[]{"STT","Số phiếu nhập","Ngày lập","Nhà cung cấp","Số lượng","Đơn giá","Thành tiền"};
        ArrayList<ImportProduct> list= (new ImportProduct()).getImporByProductID(id);
-        Object[][] body=new Object[list.size()][6];
+        Object[][] body=new Object[list.size()][7];
         for(int i=0;i<list.size();i++)
         {
             body[i][0]=i;
             body[i][1]=list.get(i).id();
             body[i][2]=(new SimpleDateFormat("dd/MM/yyyy")).format(list.get(i).date());
-            body[i][3]=list.get(i).count();
-            body[i][4]=list.get(i).price();
-            body[i][5]=list.get(i).total();
+            body[i][3]=list.get(i).supplier();
+            body[i][4]=list.get(i).count();
+            body[i][5]=list.get(i).price();
+            body[i][6]=list.get(i).total();
+            
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -143,6 +145,7 @@ public class ProductController {
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
         table.getColumnModel().getColumn(5).setPreferredWidth(200);
+        table.getColumnModel().getColumn(6).setPreferredWidth(200);
     }
     
     

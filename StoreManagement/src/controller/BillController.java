@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Bill;
 import model.Product;
 import model.Customer;
+import model.Supplier;
 
 /**
  *
@@ -33,17 +34,18 @@ public class BillController {
         cbCustomer.addItem("Thêm...");
     }
 
-    public void loadBook(JTable table) {
-        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Số lượng","Giá bán"};
-        ArrayList<Product> list= (new Product()).getProduct();
-        Object[][] body=new Object[list.size()][5];
+    public void loadProduct(JTable table) {
+        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Nhà cung cấp","Số lượng","Giá bán"};
+        ArrayList<Product> list= (new Product()).getProductOfSupplier();
+        Object[][] body=new Object[list.size()][6];
         for(int i=0;i<list.size();i++)
         {
             body[i][0]=i;
             body[i][1]=list.get(i).id();
             body[i][2]=list.get(i).name();
-            body[i][3]=list.get(i).count();
-            body[i][4]=list.get(i).price()*1.2;
+            body[i][3]=list.get(i).supplier().name();
+            body[i][4]=list.get(i).count();
+            body[i][5]=list.get(i).price()*1.2;
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -57,11 +59,12 @@ public class BillController {
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        table.getColumnModel().getColumn(5).setPreferredWidth(200);
     }
 
     public void searchBook(String text, JTable table) {
-        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Số lượng","Giá bán"};
-        ArrayList<Product> list= (new Product()).getProduct();
+        String[] head=new String[]{"STT","Mã sản phẩm","Tên sản phẩm","Nhà cung cấp","Số lượng","Giá bán"};
+        ArrayList<Product> list= (new Product()).getProductOfSupplier();
         for(int i=0;i<list.size();i++)
         {
             if(!list.get(i).name().contains(text) && !list.get(i).id().equals(text))
@@ -71,14 +74,15 @@ public class BillController {
             }
         }
 
-       Object[][] body=new Object[list.size()][5];
+       Object[][] body=new Object[list.size()][6];
        for(int i=0;i<list.size();i++)
         {
             body[i][0]=i;
             body[i][1]=list.get(i).id();
             body[i][2]=list.get(i).name();
-            body[i][3]=list.get(i).count();
-            body[i][4]=list.get(i).price()*1.2;
+            body[i][3]=list.get(i).supplier().name();
+            body[i][4]=list.get(i).count();
+            body[i][5]=list.get(i).price()*1.2;
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override
@@ -92,6 +96,7 @@ public class BillController {
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        table.getColumnModel().getColumn(5).setPreferredWidth(200);
     }
 
     public boolean AddBill(String[][] data, String date, String value, String moneyReceive, String moneyChange, String customerID) throws ParseException {
@@ -100,10 +105,12 @@ public class BillController {
         for(int i=0;i<data.length;i++)
         {
             String id=data[i][0];
-            int count=Integer.parseInt(data[i][1]);
-            float price=Float.parseFloat(data[i][2]);
-            float total=Float.parseFloat(data[i][3]);
-            if(!Model.AddBillInfo(id,count,price,total))
+            Supplier supplier = (new Supplier()).getSuppierByName(data[i][1]);
+            String supplierid=supplier.id();
+            int count=Integer.parseInt(data[i][2]);
+            float price=Float.parseFloat(data[i][3]);
+            float total=Float.parseFloat(data[i][4]);
+            if(!Model.AddBillInfo(id,supplierid,count,price,total))
                 return false;
         }
         return true;

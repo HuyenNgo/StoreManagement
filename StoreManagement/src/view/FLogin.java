@@ -125,9 +125,11 @@ public class FLogin extends javax.swing.JFrame {
             return;
         }
         
-        String username=txfUserName.getText().toString();
-        String password =txfPassword.getText().toString();
+        String username=txfUserName.getText();
+        String password =txfPassword.getText();
         try {
+            
+            boolean rs=Controller.Login(username,password);
             if(Controller.Login(username,password))
             {
                 FManagement.getInstance().setAccount(Controller.getAccountByUsername(username));

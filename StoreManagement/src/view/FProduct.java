@@ -63,7 +63,7 @@ public class FProduct extends MyFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sách");
+        setTitle("Sản Phẩm");
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
@@ -154,17 +154,17 @@ public class FProduct extends MyFrame {
 
         tableProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Số lượng tồn", "Giá"
+                "STT", "Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Số lượng tồn"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {

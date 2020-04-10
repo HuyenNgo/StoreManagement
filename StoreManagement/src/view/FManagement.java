@@ -53,6 +53,7 @@ public class FManagement extends MyFrame {
         btnSeachCategory = new javax.swing.JButton();
         btnSearchCustomer = new javax.swing.JButton();
         btnSearchProduct = new javax.swing.JButton();
+        btnSearchSupplier = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnImportProduct = new javax.swing.JButton();
         btnBill = new javax.swing.JButton();
@@ -114,6 +115,14 @@ public class FManagement extends MyFrame {
             }
         });
 
+        btnSearchSupplier.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSearchSupplier.setText("Tra cứu nhà cung cấp");
+        btnSearchSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchSupplierActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -123,7 +132,8 @@ public class FManagement extends MyFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearchCustomer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSeachCategory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                    .addComponent(btnSearchProduct, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                    .addComponent(btnSearchProduct, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(btnSearchSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -135,7 +145,9 @@ public class FManagement extends MyFrame {
                 .addComponent(btnSeachCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(btnSearchSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(171, 0, 107));
@@ -402,6 +414,12 @@ public class FManagement extends MyFrame {
         addFormToQueue(FProduct.getInstance());
     }//GEN-LAST:event_btnSearchProductActionPerformed
 
+    private void btnSearchSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchSupplierActionPerformed
+        // TODO add your handling code here:
+        
+         addFormToQueue(FSupplier.getInstance());
+    }//GEN-LAST:event_btnSearchSupplierActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,6 +461,7 @@ public class FManagement extends MyFrame {
     private javax.swing.JButton btnSeachCategory;
     private javax.swing.JButton btnSearchCustomer;
     private javax.swing.JButton btnSearchProduct;
+    private javax.swing.JButton btnSearchSupplier;
     private javax.swing.JPanel graphPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -59,6 +59,7 @@ public class FProductInfo extends MyFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chi tiiest sản phẩm");
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
@@ -80,6 +81,11 @@ public class FProductInfo extends MyFrame {
         jLabel3.setText("Mã sản phẩm :");
 
         cbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCategoryActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnUpdate.setText("Cập nhật");
@@ -248,6 +254,12 @@ public class FProductInfo extends MyFrame {
             JOptionPane.showConfirmDialog(FProductInfo.getInstance(), "Cập nhật thất bại !","Thông báo", JOptionPane.OK_OPTION);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
+        // TODO add your handling code here:
+         Controller.loadCBCategory(cbCategory);
+        cbCategory.setSelectedIndex(-1);
+    }//GEN-LAST:event_cbCategoryActionPerformed
 
     /**
      * @param args the command line arguments

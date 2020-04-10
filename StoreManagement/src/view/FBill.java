@@ -177,32 +177,31 @@ public class FBill extends MyFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(btnUpdate)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnRemove)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnAdd))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(spCount, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1))
-                                    .addComponent(jLabel6)
-                                    .addComponent(cbCustomer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(txfDate))))
-                        .addGap(0, 61, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(spCount, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnUpdate)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnRemove)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnAdd))))
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton1))
+                        .addComponent(jLabel6)
+                        .addComponent(cbCustomer, 0, 333, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addComponent(txfDate)))
+                .addGap(58, 58, 58))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,24 +214,28 @@ public class FBill extends MyFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(txfDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(spCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnRemove)
-                    .addComponent(btnUpdate))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnRemove)
+                            .addComponent(btnAdd))
+                        .addContainerGap())))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
@@ -282,7 +285,7 @@ public class FBill extends MyFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 0));
-        jLabel7.setText("Trị giá hóa đơn");
+        jLabel7.setText("Tổng tiền thanh toán");
 
         txfValue.setEnabled(false);
 
@@ -290,6 +293,13 @@ public class FBill extends MyFrame {
         jLabel8.setForeground(new java.awt.Color(204, 204, 0));
         jLabel8.setText("Số tiền nhận");
 
+        txfMoneyReceive.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                InputMethodTextChanged(evt);
+            }
+        });
         txfMoneyReceive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txfMoneyReceiveActionPerformed(evt);
@@ -311,7 +321,7 @@ public class FBill extends MyFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(30, Short.MAX_VALUE))
+                        .addContainerGap(35, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -350,12 +360,17 @@ public class FBill extends MyFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txfChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExit)
-                    .addComponent(btnSave)
-                    .addComponent(btnNew))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExit)
+                            .addComponent(btnSave))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNew)
+                        .addGap(21, 21, 21))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -392,9 +407,10 @@ public class FBill extends MyFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try{
             String name=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),2).toString();
+            String supplierName=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),3).toString();
             String id=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),1).toString();
             int count= (int)spCount.getValue();
-            float price=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),4).toString());
+            float price=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),5).toString());
             float total=count*price;
             if(checkContain()==-1)
             {
@@ -402,6 +418,7 @@ public class FBill extends MyFrame {
                 tableBill.getRowCount()+1,
                 id,
                 name,
+                supplierName,
                 count,
                 price,
                 total
@@ -412,17 +429,17 @@ public class FBill extends MyFrame {
             else
             {
                 int rowIndex=checkContain();
-                int countTable=Integer.parseInt(tableBill.getModel().getValueAt(rowIndex, 3).toString())+(int)spCount.getValue();
-                float priceTable=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),4).toString());
+                int countTable=Integer.parseInt(tableBill.getModel().getValueAt(rowIndex, 4).toString())+(int)spCount.getValue();
+                float priceTable=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),5).toString());
                 float totalTable=countTable*priceTable;
-                tableBill.getModel().setValueAt(countTable, rowIndex, 3);
-                tableBill.getModel().setValueAt(priceTable, rowIndex, 4);
-                tableBill.getModel().setValueAt(totalTable, rowIndex, 5);
+                tableBill.getModel().setValueAt(countTable, rowIndex, 4);
+                tableBill.getModel().setValueAt(priceTable, rowIndex, 5);
+                tableBill.getModel().setValueAt(totalTable, rowIndex, 6);
             }
 
             float value=0;
             for(int i=0;i<tableBill.getRowCount();i++)
-                value+=Float.parseFloat(tableBill.getModel().getValueAt(i, 5).toString());
+                value+=Float.parseFloat(tableBill.getModel().getValueAt(i, 6).toString());
             txfValue.setText(String.valueOf(value));
             
             float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
@@ -485,13 +502,14 @@ public class FBill extends MyFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         int rowCount=tableBill.getRowCount();
-        String[][]data=new String[rowCount][4];
+        String[][]data=new String[rowCount][5];
         for(int i=0;i<rowCount;i++)
         {
             data[i][0]=tableBill.getModel().getValueAt(i, 1).toString();
             data[i][1]=tableBill.getModel().getValueAt(i, 3).toString();
             data[i][2]=tableBill.getModel().getValueAt(i, 4).toString();
             data[i][3]=tableBill.getModel().getValueAt(i, 5).toString();
+            data[i][4]=tableBill.getModel().getValueAt(i, 6).toString();
         }
         String date=txfDate.getText();
         String value=txfValue.getText();
@@ -525,6 +543,15 @@ public class FBill extends MyFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_InputMethodTextChanged
+        try{
+            float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
+            txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
+        }catch(Exception e){
+            JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_InputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -610,11 +637,11 @@ public class FBill extends MyFrame {
 
             },
             new String [] {
-                "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Giá bán", "Tổng tiền"
+                "STT", "Mã sản phẩm", "Tên sản phẩm", "Nhà cung  cấp","Số lượng", "Giá bán", "Tổng tiền"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -639,16 +666,17 @@ public class FBill extends MyFrame {
     private int checkContain()
     {
         String id=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),1).toString();
+        String supplierid=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),3).toString();
         for(int i=0;i<tableBill.getRowCount();i++)
         {
-            if(tableBill.getModel().getValueAt(i, 1).toString().equals(id))
+            if(tableBill.getModel().getValueAt(i, 1).toString().equals(id) && tableBill.getModel().getValueAt(i, 3).toString().equals(supplierid) )
                 return i;
         }
         return -1;
     }
 
     private void loadProduct() {
-        Controller.loadBook(tableProduct);
+        Controller.loadProduct(tableProduct);
     }
 
     @Override

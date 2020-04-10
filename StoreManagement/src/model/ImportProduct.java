@@ -24,9 +24,10 @@ public class ImportProduct {
     private float total;
     private Date date;
     private float valueImport;
+    private String supplier;
     
     public ImportProduct(){}
-    public ImportProduct(String id,String productID,int count, float price, float total, Date date, float valueImport)
+    public ImportProduct(String id,String productID,int count, float price, float total, Date date, float valueImport,String supplier)
     {
         this.id=id;
         this.productID=productID;
@@ -35,6 +36,7 @@ public class ImportProduct {
         this.total=total;
         this.date=date;
         this.valueImport=valueImport;
+        this.supplier=supplier;
     }
     public String id(){return id;}
     public String productID(){return productID;}
@@ -43,10 +45,11 @@ public class ImportProduct {
     public float total(){return total;}
     public Date date(){return date;}
     public float valueImport(){return valueImport;}
+    public String supplier (){ return supplier;}
 
-    public boolean AddImportProduct(Date date, float value) {
+    public boolean AddImportProduct(Date date, float value,String supplierID) {
         SimpleDateFormat df=new SimpleDateFormat("yyyy/MM/dd");
-        String SQL="call USP_AddImportProduct(\""+df.format(date)+"\",\""+value+"\")";
+        String SQL="call USP_AddImportProduct(\""+df.format(date)+"\",\""+value + "\",\""+supplierID+"\")";
         try{
             DataAccessHelper.getInstance().getConnect();
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
@@ -64,8 +67,8 @@ public class ImportProduct {
         } catch (Exception e) {return false;}
     }
 
-    public boolean AddImportProductInfo(String productID, int count, float price, float total) {
-        String SQL="call USP_AddImportProductInfo(\""+productID+"\",\""+count+"\",\""+price+"\",\""+total+"\")";
+    public boolean AddImportProductInfo(String productID, int count, float price, float total,String supplierID) {
+        String SQL="call USP_AddImportProductInfo(\""+productID+"\",\""+supplierID+"\",\""+count+"\",\""+price+"\",\""+total+"\")";
         try{
             DataAccessHelper.getInstance().getConnect();
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();
@@ -98,7 +101,8 @@ public class ImportProduct {
                 float total=Math.round(Float.parseFloat(rs.getString("totalmoney"))*10)/10;
                 Date date=(new SimpleDateFormat("yyyy-MM-dd")).parse(rs.getString("datecreate"));
                 float valueImport=Math.round(Float.parseFloat(rs.getString("totalmoney"))*10)/10;
-                list.add(new ImportProduct(id,pdID,count,price,total,date,valueImport));
+                String supplier=rs.getString("supplierName");
+                list.add(new ImportProduct(id,pdID,count,price,total,date,valueImport,supplier));
             }
             DataAccessHelper.getInstance().getClose();
         } catch (Exception e) {}

@@ -63,6 +63,8 @@ public class FImportProduct extends MyFrame {
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        cbSupplier = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txfDate = new javax.swing.JTextField();
@@ -75,7 +77,7 @@ public class FImportProduct extends MyFrame {
         btnNew = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Lập phiếu nhập sách");
+        setTitle("Lập phiếu nhập kho");
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -162,29 +164,34 @@ public class FImportProduct extends MyFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel2.setText("Nhà cung cấp");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel2)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(cbProduct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(spNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                            .addComponent(cbProduct, 0, 288, Short.MAX_VALUE)
                             .addComponent(spPrice)
-                            .addComponent(txfTotal)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                            .addComponent(txfTotal)
+                            .addComponent(cbSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(btnAdd)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -196,23 +203,27 @@ public class FImportProduct extends MyFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnAdd)
-                    .addComponent(btnRemove))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRemove)
+                    .addComponent(btnAdd))
+                .addGap(66, 66, 66))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
@@ -227,11 +238,11 @@ public class FImportProduct extends MyFrame {
 
             },
             new String [] {
-                "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Tổng tiền"
+                "STT", "Mã sản phẩm", "Tên sản phẩm", "Nhà cung cấp", "Số lượng", "Đơn giá", "Tổng tiền"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -275,35 +286,31 @@ public class FImportProduct extends MyFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNew)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExit))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txfDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(160, 160, 160)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNew)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txfDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
@@ -316,7 +323,7 @@ public class FImportProduct extends MyFrame {
                     .addComponent(btnSave)
                     .addComponent(btnExit)
                     .addComponent(btnNew))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -333,8 +340,9 @@ public class FImportProduct extends MyFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -359,8 +367,10 @@ public class FImportProduct extends MyFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String product=cbProduct.getSelectedItem().toString();
+        String supplier=cbSupplier.getSelectedItem().toString();
         String name=product.split(":")[0];
         String id=product.split(":")[1];
+        String suppliername=supplier.split(":")[0];
         int count= (int)spNumber.getValue();
         int price=(int)spPrice.getValue();
         int total=Integer.parseInt(txfTotal.getText());
@@ -370,6 +380,7 @@ public class FImportProduct extends MyFrame {
             String.valueOf(tableImportProduct.getRowCount()+1),
             id,
             name,
+            suppliername,
             count,
             price,
             total
@@ -380,17 +391,17 @@ public class FImportProduct extends MyFrame {
         else
         {
             int rowIndex=checkContain();
-            int countTable=Integer.parseInt(tableImportProduct.getModel().getValueAt(rowIndex, 3).toString())+(int)spNumber.getValue();
+            int countTable=Integer.parseInt(tableImportProduct.getModel().getValueAt(rowIndex, 4).toString())+(int)spNumber.getValue();
             int priceTable=(int)spPrice.getValue();
             int totalTable=countTable*priceTable;
-            tableImportProduct.getModel().setValueAt(countTable, rowIndex, 3);
-            tableImportProduct.getModel().setValueAt(priceTable, rowIndex, 4);
-            tableImportProduct.getModel().setValueAt(totalTable, rowIndex, 5);
+            tableImportProduct.getModel().setValueAt(countTable, rowIndex, 4);
+            tableImportProduct.getModel().setValueAt(priceTable, rowIndex, 5);
+            tableImportProduct.getModel().setValueAt(totalTable, rowIndex, 6);
         }
         
         int value=0;
         for(int i=0;i<tableImportProduct.getRowCount();i++)
-            value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 5).toString());
+            value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 6).toString());
         txfValue.setText(String.valueOf(value));
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -408,7 +419,7 @@ public class FImportProduct extends MyFrame {
         
         int value=0;
         for(int i=0;i<tableImportProduct.getRowCount();i++)
-            value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 5).toString());
+            value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 6).toString());
         txfValue.setText(String.valueOf(value));
     }//GEN-LAST:event_btnRemoveActionPerformed
 
@@ -418,30 +429,31 @@ public class FImportProduct extends MyFrame {
             int countTable=Integer.parseInt(tableImportProduct.getModel().getValueAt(rowIndex, 3).toString());
             int priceTable=Integer.parseInt(tableImportProduct.getModel().getValueAt(rowIndex, 4).toString());
             int totalTable=countTable*priceTable;
-            tableImportProduct.getModel().setValueAt(totalTable, rowIndex, 5);
+            tableImportProduct.getModel().setValueAt(totalTable, rowIndex, 6);
 
 
             int value=0;
             for(int i=0;i<tableImportProduct.getRowCount();i++)
-                value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 5).toString());
+                value+=Integer.parseInt(tableImportProduct.getModel().getValueAt(i, 6).toString());
             txfValue.setText(String.valueOf(value));
         }catch(Exception e){}
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         int rowCount=tableImportProduct.getRowCount();
+        String supplierid=cbSupplier.getSelectedItem().toString().split(":")[1];
         String[][]data=new String[rowCount][4];
         for(int i=0;i<rowCount;i++)
         {
             data[i][0]=tableImportProduct.getModel().getValueAt(i, 1).toString();
-            data[i][1]=tableImportProduct.getModel().getValueAt(i, 3).toString();
-            data[i][2]=tableImportProduct.getModel().getValueAt(i, 4).toString();
-            data[i][3]=tableImportProduct.getModel().getValueAt(i, 5).toString();
+            data[i][1]=tableImportProduct.getModel().getValueAt(i, 4).toString();
+            data[i][2]=tableImportProduct.getModel().getValueAt(i, 5).toString();
+            data[i][3]=tableImportProduct.getModel().getValueAt(i, 6).toString();
         }
         String date=txfDate.getText();
         String value=txfValue.getText();
         try {
-            if(Controller.AddImportProduct(data,date,value))
+            if(Controller.AddImportProduct(data,date,value,supplierid))
             {
                 JOptionPane.showConfirmDialog(FImportProduct.getInstance(), "Lưu phiếu nhập thành công !","Thông báo", JOptionPane.OK_OPTION);
             }
@@ -508,7 +520,9 @@ public class FImportProduct extends MyFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbProduct;
+    private javax.swing.JComboBox<String> cbSupplier;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -529,7 +543,8 @@ public class FImportProduct extends MyFrame {
 
     @Override
     public void reload() {
-        loadBook();
+        loadProduct();
+        loadSupplier();
         
         
         spNumber.setValue(0);
@@ -543,11 +558,11 @@ public class FImportProduct extends MyFrame {
 
             },
             new String [] {
-                "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Tổng tiền"
+                "STT", "Mã sản phẩm", "Tên sản phẩm","Nhà cung cấp", "Số lượng", "Đơn giá", "Tổng tiền"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -559,9 +574,14 @@ public class FImportProduct extends MyFrame {
     }
 
 
-    private void loadBook() {
-        Controller.loadBook(cbProduct);
+    private void loadProduct() {
+        Controller.loadProduct(cbProduct); 
         cbProduct.setSelectedIndex(-1);
+    }
+    private void loadSupplier()
+    {
+       Controller.loadSupplier(cbSupplier);
+       cbSupplier.setSelectedIndex(-1);
     }
 
     private void loadDate(JTextField txfDate) {
@@ -584,11 +604,13 @@ public class FImportProduct extends MyFrame {
     @Override
     public void releaseAction() {
         cbProduct.removeActionListener(cbProduct.getActionListeners()[0]);
+        cbSupplier.removeActionListener(cbSupplier.getActionListeners()[0]);
     }
 
     @Override
     public void update() {
-        loadBook();
+        loadProduct();
+        loadSupplier();
     }
 
     @Override
@@ -597,6 +619,13 @@ public class FImportProduct extends MyFrame {
             if(cbProduct.getSelectedItem().toString().equals("Thêm..."))
             {
                 FManagement.getInstance().addFormToQueue(FProduct.getInstance());
+            }
+        });
+        
+         cbSupplier.addActionListener ((ActionEvent e) -> {
+            if(cbSupplier.getSelectedItem().toString().equals("Thêm..."))
+            {
+                FManagement.getInstance().addFormToQueue(FSupplier.getInstance());
             }
         });
     }

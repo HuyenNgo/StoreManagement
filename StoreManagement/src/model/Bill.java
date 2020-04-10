@@ -72,8 +72,8 @@ public class Bill {
         } catch (Exception e) {return false;}
     }
 
-    public boolean AddBillInfo(String id, int count, float price, float total) {
-        String SQL="call USP_AddBillInfo(\""+id+"\",\""+count+"\",\""+price+"\",\""+total+"\")";
+    public boolean AddBillInfo(String id, String supplierID,int count, float price, float total) {
+        String SQL="call USP_AddBillInfo(\""+id+"\",\""+supplierID+"\",\""+count+"\",\""+price+"\",\""+total+"\")";
         try{
             DataAccessHelper.getInstance().getConnect();
             Statement statement =DataAccessHelper.getInstance().conn.createStatement();

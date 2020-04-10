@@ -26,7 +26,7 @@ public class FCustomer extends MyFrame {
     }
     private FCustomer() {
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Github Project\\BookStoreManagement\\images\\bookstore.png"));
+       
     }
 
     /**

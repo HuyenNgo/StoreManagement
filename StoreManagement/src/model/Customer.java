@@ -89,12 +89,12 @@ public class Customer {
             ResultSet rs=statement.executeQuery(SQL);
             while(rs.next())
             {
-                String id=rs.getString("MaKhachHang");
-                String name=rs.getString("TenKhachHang");
-                String phone=rs.getString("SoDienThoai");
+                String id=rs.getString("CustomerID");
+                String name=rs.getString("CustomerName");
+                String phone=rs.getString("Phone");
                 String email=rs.getString("Email");
-                String address=rs.getString("DiaChi");
-                Float owe=(float)Math.round(Float.parseFloat(rs.getString("SoTienNo")));
+                String address=rs.getString("Address");
+              //  Float owe=(float)Math.round(Float.parseFloat(rs.getString("SoTienNo")));
                 customer=new Customer(id,name,phone,email,address);
             }
             DataAccessHelper.getInstance().getClose();
