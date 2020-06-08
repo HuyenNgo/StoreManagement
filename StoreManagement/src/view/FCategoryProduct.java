@@ -68,10 +68,10 @@ public class FCategoryProduct extends MyFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Loại sản phẩm");
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(33, 115, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tìm kiếm loại sản phẩm");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -91,8 +91,8 @@ public class FCategoryProduct extends MyFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách loại sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách loại sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnExit.setText("Thoát");
@@ -144,8 +144,8 @@ public class FCategoryProduct extends MyFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         txfSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txfSearch.setToolTipText("nhập từ khoá tìm kiếm");
@@ -217,7 +217,6 @@ public class FCategoryProduct extends MyFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Danh sách loại sản phẩm");
         jPanel1.getAccessibleContext().setAccessibleDescription(" ");
 
         pack();

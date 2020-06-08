@@ -9,6 +9,8 @@ import controller.BillController;
 import controller.ExportController;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,10 +80,10 @@ public class FBill extends MyFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lập hóa đơn");
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(33, 115, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lập hóa đơn");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -101,19 +103,19 @@ public class FBill extends MyFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhập thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhập thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Khách hàng");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ngày hóa đơn");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Sản phẩm");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
@@ -167,7 +169,7 @@ public class FBill extends MyFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Số lượng");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -206,9 +208,9 @@ public class FBill extends MyFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
@@ -238,8 +240,8 @@ public class FBill extends MyFrame {
                         .addContainerGap())))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhập thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhập thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tableBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,13 +286,13 @@ public class FBill extends MyFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tổng tiền thanh toán");
 
         txfValue.setEnabled(false);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Số tiền nhận");
 
         txfMoneyReceive.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -307,7 +309,7 @@ public class FBill extends MyFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Còn lại");
 
         txfChange.setEnabled(false);
@@ -356,21 +358,21 @@ public class FBill extends MyFrame {
                     .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(txfMoneyReceive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txfChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txfChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNew)
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnExit)
                             .addComponent(btnSave))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNew)
-                        .addGap(21, 21, 21))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -489,7 +491,7 @@ public class FBill extends MyFrame {
         try{
             float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
             txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
-        }catch(Exception e){
+        }catch(NumberFormatException e){
             JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
         }
     }//GEN-LAST:event_txfMoneyReceiveActionPerformed
@@ -539,7 +541,7 @@ public class FBill extends MyFrame {
             ExportController exporter = new ExportController();
             exporter.ExportTable(tableBill, new File(System.getProperty("user.dir")+"//bill.xls"));
         }
-        catch(Exception e){
+        catch(IOException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -548,7 +550,7 @@ public class FBill extends MyFrame {
         try{
             float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
             txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
-        }catch(Exception e){
+        }catch(NumberFormatException e){
             JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
         } // TODO add your handling code here:
     }//GEN-LAST:event_InputMethodTextChanged
@@ -581,10 +583,8 @@ public class FBill extends MyFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FBill.getInstance().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            FBill.getInstance().setVisible(true);
         });
     }
 
@@ -644,6 +644,7 @@ public class FBill extends MyFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
 
+            @Override
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }

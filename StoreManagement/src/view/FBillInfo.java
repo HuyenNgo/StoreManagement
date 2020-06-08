@@ -63,63 +63,63 @@ public class FBillInfo extends MyFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mã khách hàng");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Số hóa đơn");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tên khách hàng");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Ngày lập");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Trị giá hóa đơn");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Số tiền nhận");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tiền thừa");
 
         lbBillID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbBillID.setForeground(new java.awt.Color(204, 204, 0));
+        lbBillID.setForeground(new java.awt.Color(255, 255, 255));
         lbBillID.setText("billID");
 
         lbCustomerID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbCustomerID.setForeground(new java.awt.Color(204, 204, 0));
+        lbCustomerID.setForeground(new java.awt.Color(255, 255, 255));
         lbCustomerID.setText("customerID");
 
         lbCustomerName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbCustomerName.setForeground(new java.awt.Color(204, 204, 0));
+        lbCustomerName.setForeground(new java.awt.Color(255, 255, 255));
         lbCustomerName.setText("customerName");
 
         lbDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbDate.setForeground(new java.awt.Color(204, 204, 0));
+        lbDate.setForeground(new java.awt.Color(255, 255, 255));
         lbDate.setText("date");
 
         lbValue.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbValue.setForeground(new java.awt.Color(204, 204, 0));
+        lbValue.setForeground(new java.awt.Color(255, 255, 255));
         lbValue.setText("value");
 
         lbMoneyReceive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbMoneyReceive.setForeground(new java.awt.Color(204, 204, 0));
+        lbMoneyReceive.setForeground(new java.awt.Color(255, 255, 255));
         lbMoneyReceive.setText("moneyReceive");
 
         lbMoneyChange.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbMoneyChange.setForeground(new java.awt.Color(204, 204, 0));
+        lbMoneyChange.setForeground(new java.awt.Color(255, 255, 255));
         lbMoneyChange.setText("moneyChange");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -182,8 +182,8 @@ public class FBillInfo extends MyFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng chi tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng chi tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tableBillInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,10 +227,10 @@ public class FBillInfo extends MyFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Chi tiết hóa đơn");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

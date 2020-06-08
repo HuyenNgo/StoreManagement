@@ -82,13 +82,13 @@ public class FManagement extends MyFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(171, 0, 107));
+        jLabel1.setForeground(new java.awt.Color(33, 115, 70));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản lý cửa hàng Moij");
         jLabel1.setToolTipText("");
 
-        jPanel2.setBackground(new java.awt.Color(171, 0, 107));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tra cứu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tra cứu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnSeachCategory.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -150,8 +150,8 @@ public class FManagement extends MyFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(171, 0, 107));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lập phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lập phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         btnImportProduct.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnImportProduct.setText("Lập phiếu nhập hàng");
@@ -191,8 +191,8 @@ public class FManagement extends MyFrame {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(171, 0, 107));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Báo cáo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(204, 204, 0))); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(33, 115, 70));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Báo cáo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         btnReportInventory.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnReportInventory.setText("Báo cáo tồn");
@@ -373,7 +373,7 @@ public class FManagement extends MyFrame {
     }//GEN-LAST:event_btnReportInventoryActionPerformed
 
     private void btnReportRevenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportRevenueActionPerformed
-       
+        addFormToQueue(ReportInventure.getInstance());
     }//GEN-LAST:event_btnReportRevenueActionPerformed
 
     private void menuSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSearchProductActionPerformed
