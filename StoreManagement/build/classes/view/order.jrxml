@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="637" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7fb51419-46b4-48e4-a1bb-255bf53c7764">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_order_id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+
+A.Numbill as order_id,
+B.CustomerName as customer_Name,
+A.Totalmoney as Sum_money,
+A.paid as order_paid,
+A.rest as order_rest,
+C.Amount as orderdetail_quality,
+C.Price as orderdetail_price,
+C.TotalMoney as orderdetail_money ,
+D.ProductID as product_code,
+D.ProductName as product_name
+FROM BILL A 
+LEFT JOIN Customer B  on A.customerID=B.CustomerID
+LEFT JOIN Detail_bill C on C.Numbill=A.Numbill
+LEFT JOIN Product D  on D.ProductID=C.ProductID
+Where A.Numbill=$P{p_order_id}]]>
+	</queryString>
+	<field name="order_id" class="java.lang.String"/>
+	<field name="customer_Name" class="java.lang.String"/>
+	<field name="product_code" class="java.lang.String"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="orderdetail_price" class="java.math.BigDecimal"/>
+	<field name="orderdetail_quality" class="java.lang.String"/>
+	<field name="orderdetail_money" class="java.math.BigDecimal"/>
+	<field name="order_paid" class="java.math.BigDecimal"/>
+	<field name="order_rest" class="java.math.BigDecimal"/>
+	<field name="Sum_money" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement x="240" y="105" width="129" height="41" uuid="fe310fd7-f250-4b6c-b540-193e0c776a19"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HOÁ ĐƠN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="211" y="-26" width="612" height="131" uuid="1ccee339-b6cb-48fd-829c-c71dfaf9dbf8"/>
+				<imageExpression><![CDATA["C:\\Users\\NGO THI HUYEN\\Pictures\\moji_shop_thien_duong_qua_tang_phu_kien.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="95" splitType="Stretch">
+			<textField>
+				<reportElement x="128" y="58" width="100" height="20" uuid="23dde018-6376-4726-8851-6ac812c16c9c"/>
+				<textFieldExpression><![CDATA[$F{customer_Name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="57" width="86" height="20" uuid="1b454757-b564-453f-8392-36ab2b75fa48"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Khách hàng:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-10" y="81" width="622" height="1" uuid="32504557-f285-4188-acb5-dadb081296a7"/>
+			</line>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="128" y="16" width="100" height="20" uuid="66599d69-6213-4a5a-b290-e07776e5408c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="16" width="62" height="20" uuid="f65f836b-d5f1-42af-80b5-85e29b731643"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày mua:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="16" width="86" height="20" uuid="25df91df-92ba-4b11-a73c-c94167581668"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Số hoá đơn:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="474" y="16" width="100" height="20" uuid="ecd9d7b7-1f57-41f8-8780-a83009d817c0"/>
+				<textFieldExpression><![CDATA[$F{order_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="17" width="84" height="20" uuid="f422e8d6-d6f7-453b-a265-8d2a0f978489"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="17" width="77" height="20" uuid="9bd295b4-f188-4291-953b-6c679bd7d679"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="17" width="52" height="20" uuid="1bdd2439-0e17-48da-a3f7-11f294c42a51"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="17" width="60" height="20" uuid="7001f817-c69f-4ab6-8541-7b61e0d40cd9"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="17" width="62" height="20" uuid="98489820-f0b4-43cd-a4ae-95c9f362d622"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="10" width="97" height="20" uuid="927d843e-b9b2-4485-9aaf-56022925a2d1"/>
+				<textFieldExpression><![CDATA[$F{product_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="10" width="116" height="20" uuid="a3516b93-e52d-4427-a9a6-b33f6979bfcd"/>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="276" y="10" width="99" height="20" uuid="15c7d4c7-9648-4284-9307-be4fdf152214"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{orderdetail_price}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="410" y="10" width="45" height="20" uuid="27a595de-b00b-48aa-b332-4724a1812e2d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{orderdetail_money}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="514" y="10" width="45" height="20" uuid="69586bf8-3204-4b8c-a55a-0824cd05db3d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{orderdetail_money}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="62" width="456" height="18" uuid="b6804818-ec28-48d6-b110-1a6607b1b22a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Moji, 21 khu phố 6, phường Linh Trung, quận Thủ Đức, HCM - 0962. 556 664]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="33" width="128" height="18" uuid="e205d60e-9557-4066-99bf-bba7ea9e6714"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Hẹn gặp lại quý khách]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="378" y="27" width="77" height="20" uuid="b2c87008-75ec-4aa5-8276-f351bb6ef0a0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tổng  tiền:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="59" width="77" height="20" uuid="6b38c69d-c0aa-4666-8edf-d24e9c2ec9c0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Khách trả:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="95" width="80" height="20" uuid="0d69b150-11d6-4fe0-9ba5-4b24f9784cc2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tiền thừa:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="350" y="16" width="224" height="1" uuid="83e6f7f4-8767-489e-adb9-55b247e1bfe3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="493" y="27" width="100" height="20" uuid="dd11db2a-f579-4d30-baa5-e49a844b69be"/>
+				<textFieldExpression><![CDATA[$F{Sum_money}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="493" y="59" width="100" height="20" uuid="d970f357-b5b7-4075-adf9-d9c1c3e8fb14"/>
+				<textFieldExpression><![CDATA[$F{order_paid}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="493" y="95" width="100" height="20" uuid="cbf772de-b485-40ec-83d9-2613eb6f563a"/>
+				<textFieldExpression><![CDATA[$F{order_rest}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

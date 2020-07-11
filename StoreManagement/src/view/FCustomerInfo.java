@@ -262,7 +262,8 @@ public class FCustomerInfo extends MyFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tableBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBillMouseClicked
-      
+        FBillInfo.getInstance().setBill(tableBill.getModel().getValueAt(tableBill.getSelectedRow(), 1).toString());
+        FManagement.getInstance().addFormToQueue(FBillInfo.getInstance());
     }//GEN-LAST:event_tableBillMouseClicked
 
     /**

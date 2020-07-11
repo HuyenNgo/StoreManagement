@@ -10,14 +10,33 @@ import controller.ExportController;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import model.DataAccessHelper;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -29,6 +48,7 @@ public class FBill extends MyFrame {
      * Creates new form FBill
      */
     private static FBill instance=null;
+    private int BillID;
     public static FBill getInstance(){
         if(instance==null)
             instance=new FBill();
@@ -76,6 +96,7 @@ public class FBill extends MyFrame {
         txfMoneyReceive = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txfChange = new javax.swing.JTextField();
+        jPrintBill = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lập hóa đơn");
@@ -299,7 +320,7 @@ public class FBill extends MyFrame {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                InputMethodTextChanged(evt);
+                FBill.this.inputMethodTextChanged(evt);
             }
         });
         txfMoneyReceive.addActionListener(new java.awt.event.ActionListener() {
@@ -314,6 +335,13 @@ public class FBill extends MyFrame {
 
         txfChange.setEnabled(false);
 
+        jPrintBill.setText("In hoá đơn");
+        jPrintBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPrintBillActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -327,13 +355,6 @@ public class FBill extends MyFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnNew)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSave)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExit))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9))
@@ -341,11 +362,24 @@ public class FBill extends MyFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txfMoneyReceive, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                                     .addComponent(txfChange))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 114, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jPrintBill)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNew)
+                                .addGap(33, 33, 33)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnExit)
+                                .addGap(18, 18, 18))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,21 +392,17 @@ public class FBill extends MyFrame {
                     .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(txfMoneyReceive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txfChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNew)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExit)
-                            .addComponent(btnSave))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txfChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNew)
+                    .addComponent(btnSave)
+                    .addComponent(btnExit)
+                    .addComponent(jPrintBill))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -411,10 +441,17 @@ public class FBill extends MyFrame {
             String name=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),2).toString();
             String supplierName=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),3).toString();
             String id=tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),1).toString();
+            int amount=Integer.parseInt((tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),4).toString()));
             int count= (int)spCount.getValue();
+            
+            if(count>0)
+            {
+            if( count<=amount )
+                    {
+                        
             float price=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),5).toString());
             float total=count*price;
-            if(checkContain()==-1)
+            if(checkContain()==-1 )
             {
                 Object[] row=new Object[]{
                 tableBill.getRowCount()+1,
@@ -428,15 +465,26 @@ public class FBill extends MyFrame {
                 DefaultTableModel model = (DefaultTableModel) tableBill.getModel();
                 model.addRow(row);
             }
-            else
+            else 
+               
             {
                 int rowIndex=checkContain();
                 int countTable=Integer.parseInt(tableBill.getModel().getValueAt(rowIndex, 4).toString())+(int)spCount.getValue();
+                
+              
+                if(countTable<=amount )
+                {
                 float priceTable=Float.parseFloat(tableProduct.getModel().getValueAt(tableProduct.getSelectedRow(),5).toString());
                 float totalTable=countTable*priceTable;
                 tableBill.getModel().setValueAt(countTable, rowIndex, 4);
                 tableBill.getModel().setValueAt(priceTable, rowIndex, 5);
                 tableBill.getModel().setValueAt(totalTable, rowIndex, 6);
+                }
+                else
+                {
+                JOptionPane.showConfirmDialog(FBill.getInstance(), "Số lượng nhập vượt quá số lượng hàng còn !","Thông báo", JOptionPane.OK_OPTION);
+                }
+                
             }
 
             float value=0;
@@ -446,8 +494,23 @@ public class FBill extends MyFrame {
             
             float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
             txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
+         }
+             else {
+                
+                JOptionPane.showConfirmDialog(FBill.getInstance(), "Số lượng nhập vượt quá số lượng hàng còn !","Thông báo", JOptionPane.OK_OPTION);
+                }
+            }
+            else
+            { 
+                JOptionPane.showConfirmDialog(FBill.getInstance(), "Số lượng nhập không được nhỏ hơn 0 !","Thông báo", JOptionPane.OK_OPTION);
+            
+            }
+            
         }
         catch(Exception e){}
+        
+        
+       
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
@@ -464,7 +527,8 @@ public class FBill extends MyFrame {
         txfValue.setText(String.valueOf(value));
         
         float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
-        txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
+        txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive)); 
+  
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -488,12 +552,17 @@ public class FBill extends MyFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txfMoneyReceiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfMoneyReceiveActionPerformed
-        try{
-            float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
-            txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
-        }catch(NumberFormatException e){
-            JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
-        }
+       
+//         Locale lc = new Locale("nv","VN");
+//         BigDecimal c1=new BigDecimal(txfMoneyReceive.getText());
+//           
+//           txfMoneyReceive.setText(NumberFormat.getCurrencyInstance(lc).format(c1));
+//        try{
+//            float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
+//            txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
+//        }catch(NumberFormatException e){
+//            JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
+//        }
     }//GEN-LAST:event_txfMoneyReceiveActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -516,6 +585,13 @@ public class FBill extends MyFrame {
         String date=txfDate.getText();
         String value=txfValue.getText();
         String moneyReceive=txfMoneyReceive.getText();
+         try{
+              
+             txfChange.setText(String.valueOf(Float.parseFloat(moneyReceive)-Float.parseFloat(value)));
+        }catch(NumberFormatException e){
+            JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
+        }
+       
         String moneyChange=txfChange.getText();
         String customerID=cbCustomer.getSelectedItem().toString().split(":")[1];
         
@@ -524,7 +600,19 @@ public class FBill extends MyFrame {
             if(Controller.AddBill(data,date,value,moneyReceive,moneyChange,customerID))
             {
                 JOptionPane.showConfirmDialog(FBill.getInstance(), "Lưu hóa đơn thành công !","Thông báo", JOptionPane.OK_OPTION);
+                
+                 
+                String SQL="Select max(Numbill)as ID from Bill";
+                DataAccessHelper.getInstance().getConnect();
+                Statement statement =DataAccessHelper.getInstance().conn.createStatement();
+                ResultSet rs=statement.executeQuery(SQL);
+                 while(rs.next())
+                 {
+                BillID=Integer.parseInt(rs.getString("ID"));
+                 }
+                System.out.print("billlll"+BillID);
                 loadProduct();
+                DataAccessHelper.getInstance().getClose();
             }
             else
             {
@@ -533,6 +621,8 @@ public class FBill extends MyFrame {
             }
         } catch (ParseException ex) {
             Logger.getLogger(FBill.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FBill.class.getName()).log(Level.SEVERE, "Loi", ex);
         }
         
         
@@ -546,14 +636,36 @@ public class FBill extends MyFrame {
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_InputMethodTextChanged
-        try{
-            float moneyReceive=Float.parseFloat(txfMoneyReceive.getText());
-            txfChange.setText(String.valueOf(Float.parseFloat(txfValue.getText())-moneyReceive));
-        }catch(NumberFormatException e){
-            JOptionPane.showConfirmDialog(FBill.getInstance(), "Nhập dữ liệu không đúng định dạng !","Thông báo", JOptionPane.OK_OPTION);
-        } // TODO add your handling code here:
-    }//GEN-LAST:event_InputMethodTextChanged
+    private void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_inputMethodTextChanged
+        
+        
+        
+//         Locale lc = new Locale("nv","VN");
+//         BigDecimal c1=new BigDecimal(txfMoneyReceive.getText());
+//           
+//         txfMoneyReceive.setText(NumberFormat.getCurrencyInstance(lc).format(c1));
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_inputMethodTextChanged
+
+    private void jPrintBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPrintBillActionPerformed
+          Connection conn = null;
+        try {
+            
+            DataAccessHelper.getInstance().getConnect();
+            conn = DataAccessHelper.getInstance().conn;
+            Map<String,Object> parameters = new HashMap<String,Object>();
+            parameters.put("p_order_id", BillID);
+            
+            JasperReport jreport = JasperCompileManager.compileReport("D:\\WORK\\DOAN\\HK2\\JAVA\\StoreManagement\\StoreManagement\\StoreManagement\\src\\view\\order.jrxml");
+            JasperPrint jprint = JasperFillManager.fillReport(jreport, parameters, conn);
+            JasperViewer.viewReport(jprint,false );
+
+        } catch (JRException e) {
+        }catch(SQLException exq){
+            
+        }                // TODO add your handling code here:
+    }//GEN-LAST:event_jPrintBillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -608,6 +720,7 @@ public class FBill extends MyFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jPrintBill;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner spCount;

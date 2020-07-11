@@ -75,6 +75,7 @@ public class FImportProduct extends MyFrame {
         txfValue = new javax.swing.JTextField();
         btnExit = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lập phiếu nhập kho");
@@ -281,28 +282,40 @@ public class FImportProduct extends MyFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNew)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExit))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNew)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExit))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txfDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(160, 160, 160)
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txfDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(txfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(129, 129, 129)
+                        .addComponent(jButton1)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -323,7 +336,9 @@ public class FImportProduct extends MyFrame {
                     .addComponent(btnSave)
                     .addComponent(btnExit)
                     .addComponent(btnNew))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -374,6 +389,8 @@ public class FImportProduct extends MyFrame {
         int count= (int)spNumber.getValue();
         int price=(int)spPrice.getValue();
         int total=Integer.parseInt(txfTotal.getText());
+        if(count>0)
+        {
         if(checkContain()==-1)
         {
             Object[] row=new Object[]{
@@ -397,6 +414,11 @@ public class FImportProduct extends MyFrame {
             tableImportProduct.getModel().setValueAt(countTable, rowIndex, 4);
             tableImportProduct.getModel().setValueAt(priceTable, rowIndex, 5);
             tableImportProduct.getModel().setValueAt(totalTable, rowIndex, 6);
+        }
+        }
+        else
+        {
+        JOptionPane.showConfirmDialog(FImportProduct.getInstance(), "Số lượng nhập không được nhỏ hơn 0 !","Thông báo", JOptionPane.OK_OPTION);
         }
         
         int value=0;
@@ -478,6 +500,10 @@ public class FImportProduct extends MyFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txfTotalActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new FReportSale().setVisible(true);       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,6 +547,7 @@ public class FImportProduct extends MyFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbProduct;
     private javax.swing.JComboBox<String> cbSupplier;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

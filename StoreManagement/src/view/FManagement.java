@@ -369,11 +369,11 @@ public class FManagement extends MyFrame {
     }//GEN-LAST:event_btnImportProductActionPerformed
 
     private void btnReportInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportInventoryActionPerformed
-       
+        addFormToQueue(FReportInventory.getInstance());
     }//GEN-LAST:event_btnReportInventoryActionPerformed
 
     private void btnReportRevenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportRevenueActionPerformed
-        addFormToQueue(ReportInventure.getInstance());
+        addFormToQueue(FReportSale.getInstance());
     }//GEN-LAST:event_btnReportRevenueActionPerformed
 
     private void menuSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSearchProductActionPerformed
