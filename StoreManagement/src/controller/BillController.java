@@ -45,7 +45,7 @@ public class BillController {
             body[i][2]=list.get(i).name();
             body[i][3]=list.get(i).supplier().name();
             body[i][4]=list.get(i).count();
-            body[i][5]=list.get(i).price()*1.2;
+            body[i][5]=list.get(i).price()*4;
         }
         DefaultTableModel dtm = new DefaultTableModel(body,head){
             @Override

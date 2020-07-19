@@ -201,10 +201,9 @@ public class FCustomerInfo extends MyFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
-
+        jLabel1.setBackground(new java.awt.Color(33, 115, 70));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(33, 115, 70));
         jLabel1.setText("Thông tin khách hàng");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

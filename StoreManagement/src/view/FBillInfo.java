@@ -227,10 +227,9 @@ public class FBillInfo extends MyFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(33, 115, 70));
-
+        jLabel1.setBackground(new java.awt.Color(33, 115, 70));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(33, 115, 70));
         jLabel1.setText("Chi tiết hóa đơn");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="761" pageHeight="648" columnWidth="761" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7fb51419-46b4-48e4-a1bb-255bf53c7764">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_id" class="java.lang.Integer"/>
+	<parameter name="productCate_id" class="java.lang.Integer"/>
+	<parameter name="supplier_id" class="java.lang.Integer"/>
+	<parameter name="date1" class="java.lang.String"/>
+	<parameter name="date2" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT YEAR(tb.DATECREATE) as year,
+B.productName as productName,
+C.categoryName as categoryName,
+D.supplierName as supplierName, 
+sum(A.NUMINPUT) as slNhap ,
+sum(E.amount) as slBan,
+sum(A.NUMINPUT)-sum(E.amount) as slTon
+
+from storemanagement.detail_inventoryinput A
+inner join inventoryinput tb on A.NUMINVENTORY=tb.NUMINVENTORY
+inner join Product B on A.productID=B.productID
+
+inner join Category C on C.categoryID=B.categoryID
+inner join Supplier D on tb.SupplierID=D.supplierID
+inner join detail_bill E on E.PRODUCTID=B.PRODUCTID and E.SupplierID=D.SupplierID
+inner join bill F on E.NumBiLL=F.NumBill
+WHERE 
+( A.productID=$P{p_id} or $P{p_id}=-1) and ( B.categoryID=$P{productCate_id} or $P{productCate_id}=-1) and ( E.SupplierID=$P{supplier_id} or $P{supplier_id}=-1)
+ and  tb.DATECREATE>=STR_TO_DATE($P{date1},'%d/%m/%Y') and tb.DATECREATE<=STR_TO_DATE($P{date2},'%d/%m/%Y')
+AND  F.CREATEDATE>=STR_TO_DATE($P{date1},'%d/%m/%Y') and F.CREATEDATE<=STR_TO_DATE($P{date2},'%d/%m/%Y')
+GROUP BY YEAR(tb.DATECREATE), B.productName,C.categoryName,D.supplierName]]>
+	</queryString>
+	<field name="productName" class="java.lang.String"/>
+	<field name="categoryName" class="java.lang.String"/>
+	<field name="supplierName" class="java.lang.String"/>
+	<field name="slNhap" class="java.lang.Integer"/>
+	<field name="slBan" class="java.lang.Integer"/>
+	<field name="slTon" class="java.lang.Integer"/>
+	<field name="year" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="262" y="31" width="234" height="41" uuid="fe310fd7-f250-4b6c-b540-193e0c776a19"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO TỒN KHO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="566" height="101" uuid="1ccee339-b6cb-48fd-829c-c71dfaf9dbf8"/>
+				<imageExpression><![CDATA["C:\\Users\\NGO THI HUYEN\\Pictures\\moji_shop_thien_duong_qua_tang_phu_kien.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="95" splitType="Stretch">
+			<line>
+				<reportElement x="14" y="64" width="756" height="1" uuid="32504557-f285-4188-acb5-dadb081296a7"/>
+			</line>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="185" y="2" width="100" height="20" uuid="66599d69-6213-4a5a-b290-e07776e5408c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="2" width="99" height="20" uuid="f65f836b-d5f1-42af-80b5-85e29b731643"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày lập báo cáo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="185" y="34" width="100" height="20" uuid="e7aefaa2-545f-4c7d-bf78-de5cb5545b4a"/>
+				<textFieldExpression><![CDATA[$P{date1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="33" width="100" height="20" uuid="fa71aecf-9a54-4e8f-afce-e7f8618029eb"/>
+				<textFieldExpression><![CDATA[$P{date2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="33" width="100" height="20" uuid="843c3e64-fcbd-44b1-9e68-2a3d20ff9c02"/>
+				<text><![CDATA[Báo cáo từ ngày:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="33" width="49" height="20" uuid="b8e3c191-8925-4fdc-bd38-57820e5f01dd"/>
+				<text><![CDATA[đến ngày:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="12" width="100" height="20" uuid="2d07c565-baea-428b-bb90-70bd047d1089"/>
+				<text><![CDATA[Loại sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="12" width="100" height="20" uuid="2ac94566-f1c4-48cf-a311-5c9a860e6b76"/>
+				<text><![CDATA[Sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="12" width="100" height="20" uuid="f9ebfa5a-129b-4600-9981-b1235d6af493"/>
+				<text><![CDATA[Nhà cung cấp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="12" width="73" height="20" uuid="842048f9-6fb7-48c8-b758-d60858e02321"/>
+				<text><![CDATA[Số lượng nhập]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="12" width="69" height="20" uuid="46b94d61-0611-4440-b459-36ec587872b8"/>
+				<text><![CDATA[Số lượng bán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="663" y="12" width="63" height="20" uuid="470296a0-cae9-4999-a84e-712971952ac9"/>
+				<text><![CDATA[Số lượng tồn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="12" width="57" height="20" uuid="46a7dbe1-23ac-4860-8449-d41420b6b0fc"/>
+				<text><![CDATA[Năm]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="201" y="17" width="100" height="20" uuid="332b5f60-1888-4393-8e62-3d01a2df8530"/>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="17" width="100" height="20" uuid="a43076e0-63df-4ce5-a450-7013edfd131b"/>
+				<textFieldExpression><![CDATA[$F{categoryName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="17" width="100" height="20" uuid="aacd8f25-c2cc-4f16-9177-a48dae420b7b"/>
+				<textFieldExpression><![CDATA[$F{supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="17" width="73" height="20" uuid="09430e56-f623-4889-9ed6-9f8e8ba9f8e0"/>
+				<textFieldExpression><![CDATA[$F{slNhap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="553" y="17" width="64" height="20" uuid="45dac168-891d-4a2d-a71e-038d375c32e6"/>
+				<textFieldExpression><![CDATA[$F{slBan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="17" width="62" height="20" uuid="50e50923-dc94-45dd-91cb-df9dc288454c"/>
+				<textFieldExpression><![CDATA[$F{slTon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="17" width="57" height="20" uuid="6f137657-b812-4f03-be0e-765cdc1135ec"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="120" splitType="Stretch"/>
+	</summary>
+</jasperReport>

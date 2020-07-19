@@ -5,11 +5,7 @@
  */
 package controller;
 
-import java.util.ArrayList;
-import javax.swing.JComboBox;
-import model.Category;
-import model.Product;
-import model.Supplier;
+
 
 /**
  *

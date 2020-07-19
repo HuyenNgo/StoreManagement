@@ -249,9 +249,7 @@ public class FManagement extends MyFrame {
         );
         graphPanelLayout.setVerticalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphPanelLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Tra cứu");
@@ -387,12 +385,12 @@ public class FManagement extends MyFrame {
     }//GEN-LAST:event_menuSearchCustomerActionPerformed
 
     private void menuReportInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportInventoryActionPerformed
-        // TODO add your handling code here:
+         addFormToQueue(FReportInventory.getInstance());// TODO add your handling code here:
         
     }//GEN-LAST:event_menuReportInventoryActionPerformed
 
     private void menuReportRevenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportRevenueActionPerformed
-        // TODO add your handling code here:
+      addFormToQueue(FReportSale.getInstance());   // TODO add your handling code here:
       
     }//GEN-LAST:event_menuReportRevenueActionPerformed
 

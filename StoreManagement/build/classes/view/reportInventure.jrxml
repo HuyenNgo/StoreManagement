@@ -26,7 +26,7 @@ inner join Supplier D on tb.SupplierID=D.supplierID
 inner join detail_bill E on E.PRODUCTID=B.PRODUCTID and E.SupplierID=D.SupplierID
 inner join bill F on E.NumBiLL=F.NumBill
 WHERE 
-A.productID=$P{p_id} and B.categoryID=$P{productCate_id} and E.SupplierID=$P{supplier_id}
+( A.productID=$P{p_id} or $P{p_id}=-1) and ( B.categoryID=$P{productCate_id} or $P{productCate_id}=-1 ) and (  E.SupplierID=$P{supplier_id} or $P{supplier_id}=-1)
  and  tb.DATECREATE>=STR_TO_DATE($P{date1},'%d/%m/%Y') and tb.DATECREATE<=STR_TO_DATE($P{date2},'%d/%m/%Y')
 AND  F.CREATEDATE>=STR_TO_DATE($P{date1},'%d/%m/%Y') and F.CREATEDATE<=STR_TO_DATE($P{date2},'%d/%m/%Y')
 GROUP BY MONTH(tb.DATECREATE), B.productName,C.categoryName,D.supplierName]]>
